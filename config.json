@@ -3,5 +3,10 @@
     "width": 768,
     "height": 1280
   },
-  "output_directory": "tiktok/disney-characters"
+  "output_directory": "images/",
+  "model": "Sovera/FLUX.1-dev",
+  "hf_token": "${HF_TOKEN}",
+  "num_inference_steps": 4,
+  "send_images": false,
+  "email": ""
 }
