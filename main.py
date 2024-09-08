@@ -11,7 +11,7 @@ def main():
     sentences = get_sentences()
 
     # Generate the images
-    images = generate_images(sentences, config)
+    #images = generate_images(sentences, config)
     
     
     

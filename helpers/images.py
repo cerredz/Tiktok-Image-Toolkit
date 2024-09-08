@@ -29,6 +29,7 @@ def generate_images(sentences, config):
     width = config["image"]["width"]
     height = config["image"]["height"]
     output_directory = config["output_directory"]
+    
 
     # check if the required parameters are in the config
     if not model or not hf_token or not num_inference_steps or not width or not height or not output_directory:
