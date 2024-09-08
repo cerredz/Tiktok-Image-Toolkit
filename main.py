@@ -2,6 +2,7 @@
 from helpers.sentences import get_sentences
 from helpers.config import load_config
 from helpers.images import generate_images
+from helpers.email import send_email
 
 def main():
     # Load the config file
@@ -11,7 +12,11 @@ def main():
     sentences = get_sentences()
 
     # Generate the images
-    #images = generate_images(sentences, config)
+    image_paths = generate_images(sentences, config)
+    
+    # send the images to the user if that option is enabled
+    if config["send_email"] and image_paths:
+        send_email(config["email"], image_paths)
     
     
     

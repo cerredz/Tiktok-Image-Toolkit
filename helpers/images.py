@@ -29,13 +29,16 @@ def generate_images(sentences, config):
     width = config["image"]["width"]
     height = config["image"]["height"]
     output_directory = config["output_directory"]
+    send_email = config["send_email"]
+    email = config["email"]
     
 
     # check if the required parameters are in the config
-    if not model or not hf_token or not num_inference_steps or not width or not height or not output_directory:
+    if not model or not hf_token or not num_inference_steps or not width or not height or not output_directory or not send_email or not email:
          raise ValueError("Missing required parameters in config.json")
     
     os.makedirs(output_directory, exist_ok=True)
+    image_paths = []
 
     # generate the images
     for i, s in enumerate(sentences):
@@ -50,7 +53,10 @@ def generate_images(sentences, config):
             api_name="/infer"
         )
         # save the image to the correct directory
-        save_image(result, output_directory, i)
+        image_path = save_image(result, output_directory, i)
+        image_paths.append(image_path)
+
+    return image_paths
 
 
 # After generating a image from a sentence, this function will save the image to the output directory
@@ -63,8 +69,10 @@ def save_image(result, output_directory, i):
         try:
             shutil.move(source_path, file_path)  
             print(f"Image {i+1} saved as {file_path}")
+            return file_path
         except Exception as e:
             print(f"Error: {e}")
+    return None
 
 
 
