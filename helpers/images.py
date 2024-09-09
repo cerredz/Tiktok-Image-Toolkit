@@ -5,8 +5,7 @@ import os
 import random
 import sys
 import shutil
-
-
+import uuid
 
 '''
 # Generates the images from the sentences and config
@@ -29,12 +28,9 @@ def generate_images(sentences, config):
     width = config["image"]["width"]
     height = config["image"]["height"]
     output_directory = config["output_directory"]
-    send_email = config["send_email"]
-    email = config["email"]
-    
 
     # check if the required parameters are in the config
-    if not model or not hf_token or not num_inference_steps or not width or not height or not output_directory or not send_email or not email:
+    if not model or not hf_token or not num_inference_steps or not width or not height or not output_directory:
          raise ValueError("Missing required parameters in config.json")
     
     os.makedirs(output_directory, exist_ok=True)
@@ -58,13 +54,17 @@ def generate_images(sentences, config):
 
     return image_paths
 
-
 # After generating a image from a sentence, this function will save the image to the output directory
+'''
+result: tuple - The result from the gradio client
+output_directory: str - The directory to save the image to
+i: int - The index of the image
+'''
 def save_image(result, output_directory, i):
     # Handle the returned file path
     if isinstance(result, tuple) and len(result) == 2 and os.path.isfile(result[0]):
         source_path = result[0]
-        file_name = f"output_{i + 1}.webp"  
+        file_name = f"output_{i + 1}{uuid.uuid4()}.webp"  
         file_path = os.path.join(output_directory, file_name)
         try:
             shutil.move(source_path, file_path)  

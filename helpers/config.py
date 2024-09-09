@@ -13,6 +13,11 @@ def load_config():
         # If not, load the HF_TOKEN from the environment variable
         config["hf_token"] = os.getenv("HF_TOKEN")
     
+    # check if the email's password is in the config
+    if "password" not in config or config["password"] == "":
+        # If not, load the password from the environment variable
+        config["password"] = os.getenv("EMAIL_PASSWORD")
+    
     return config
 
 __all__ = ["load_config"]

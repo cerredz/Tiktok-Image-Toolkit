@@ -15,11 +15,8 @@ def main():
     image_paths = generate_images(sentences, config)
     
     # send the images to the user if that option is enabled
-    if config["send_email"] and image_paths:
+    if config["send_images"] and image_paths:
         send_email(config["email"], image_paths)
-    
-    
-    
 
 
 
