@@ -35,12 +35,12 @@ def validate_config(config):
         return False
     
     # check if the width and height are valid
-    if width < 1024 or width > 1920:
-        raise ValueError("Invalid Width: Must be between 1024 and 1920")
+    if width < 256 or width > 2048:
+        raise ValueError("Invalid Width: Must be between 256 and 2048")
         return False
     
-    if height < 1024 or height > 1920:
-        raise ValueError("Invalid Height: Must be between 1024 and 1920")
+    if height < 256 or height > 2048:
+        raise ValueError("Invalid Height: Must be between 256 and 2048")
         return False
     
     # check if the num_inference_steps is valid
