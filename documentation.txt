@@ -1,0 +1,40 @@
+**Sentences.txt:**
+- This file contains the sentences that will be used to generate the images.
+- The sentences are stored in a list, with each sentence on a new line.
+
+**Config.json:**
+- This file contains the configuration / customizable options for the application. It starts off containing default values that we think are best suited for TikTok videos.
+- The options are as follows: 
+    - "Image": dictionary containing the following keys:
+        - "width": 
+            - the width of the image in pixels.
+            - must be between 256 and 2048.
+        - "height": 
+            - the height of the image in pixels.
+            - must be between 256 and 2048.
+        
+    - "output_directory": the directory where the images will be saved.
+        - must be a valid directory path and can include spaces. Ex: "images" or "images/mountains" or "images/planets in space"
+
+    - "model": the name of the hugging face model to use for image generation.
+        - "FLUX.1-dev" is the default model, private / custom models must be duplicated from the Hugging Face website and used here.
+        - other recommended model is "Flux.1-Schnell"
+
+
+    - "hf_token": your hugging face token, 
+        - before running the main.py file, you must generate a token here: https://huggingface.co/settings/tokens and then put it in the config.json file under the "hf_token" key.
+
+    - "num_inference_steps": the number of inference steps to use for the image generation.
+        - range depends on the model, but for "FLUX.1-dev" it must be between 1 and 28.
+        - this is the quality / detail of the image. 1 will be the lowest quality / detail, 28 will be the highest quality / detail.
+    
+    - "send_images": boolean value, true or false.
+        - if true, the images will be sent to the email address specified in the "email" key.
+        - if false, the images will not be sent to the email address specified in the "email" key.
+
+    - "email": the email address to send the images to.
+        - must be a valid email address.
+
+    - "password": the password to send the images to.
+        - must be a google app password
+        - for more information on how to generate a google app password, see here: https://support.google.com/accounts/answer/185833?hl=en
