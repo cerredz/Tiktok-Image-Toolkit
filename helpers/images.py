@@ -6,6 +6,7 @@ import random
 import sys
 import shutil
 import uuid
+from helpers.config import validate_config
 
 '''
 # Generates the images from the sentences and config
@@ -29,9 +30,9 @@ def generate_images(sentences, config):
     height = config["image"]["height"]
     output_directory = config["output_directory"]
 
-    # check if the required parameters are in the config
-    if not model or not hf_token or not num_inference_steps or not width or not height or not output_directory:
-         raise ValueError("Missing required parameters in config.json")
+    # validate the config
+    if not validate_config(config):
+        raise ValueError("Invalid config")
     
     os.makedirs(output_directory, exist_ok=True)
     image_paths = []

@@ -20,4 +20,34 @@ def load_config():
     
     return config
 
-__all__ = ["load_config"]
+# checks if the config is valid
+def validate_config(config):
+    model = config["model"]
+    hf_token = config["hf_token"]
+    num_inference_steps = config["num_inference_steps"]
+    width = config["image"]["width"]
+    height = config["image"]["height"]
+    output_directory = config["output_directory"]
+
+    # check if the required parameters are in the config
+    if not model or not hf_token or not num_inference_steps or not width or not height or not output_directory:
+        raise ValueError("Missing required parameters in config.json")
+        return False
+    
+    # check if the width and height are valid
+    if width < 1024 or width > 1920:
+        raise ValueError("Invalid Width: Must be between 1024 and 1920")
+        return False
+    
+    if height < 1024 or height > 1920:
+        raise ValueError("Invalid Height: Must be between 1024 and 1920")
+        return False
+    
+    # check if the num_inference_steps is valid
+    if num_inference_steps < 1 or num_inference_steps > 28:
+        raise ValueError("Invalid Number of Inference Steps: Must be between 1 and 28")
+        return False
+    
+    return True
+
+__all__ = ["load_config", "validate_config"]

@@ -15,7 +15,7 @@ def send_email(email, password, image_paths):
     # Email configuration
     sender_email = email # user will be sending email to themselves
     sender_password = password
-    smtp_server = "smtp.example.com"
+    smtp_server = "smtp.gmail.com"
     smtp_port = 587
 
     # Create the email message

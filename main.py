@@ -16,7 +16,7 @@ def main():
     
     # send the images to the user if that option is enabled
     if config["send_images"] and image_paths:
-        send_email(config["email"], image_paths)
+        send_email(config["email"], config["password"], image_paths)
 
 
 
