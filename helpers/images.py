@@ -20,6 +20,7 @@ config: dict - The config to use for the images
         'width': int - The width of the image
         'height': int - The height of the image
     'output_directory': str - The directory to save the images to
+    "strength": int - the Strength of the image
 '''
 def generate_images(sentences, config):
     # extract the values from the config
@@ -29,6 +30,7 @@ def generate_images(sentences, config):
     width = config["image"]["width"]
     height = config["image"]["height"]
     output_directory = config["output_directory"]
+    strength = config["strength"]
 
     # validate the config
     if not validate_config(config):
@@ -46,6 +48,7 @@ def generate_images(sentences, config):
             randomize_seed=True,
             width=width,
             height=height,
+            guidance_scale=strength,
             num_inference_steps=num_inference_steps,
             api_name="/infer"
         )

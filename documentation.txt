@@ -19,6 +19,7 @@
     - "model": the name of the hugging face model to use for image generation.
         - "FLUX.1-dev" is the default model, private / custom models must be duplicated from the Hugging Face website and used here.
         - other recommended model is "Flux.1-Schnell"
+        - **Note:** if you change the model there might be a chance that you have to change the result object in the **images.py** file
 
 
     - "hf_token": your hugging face token, 
@@ -32,9 +33,12 @@
         - if true, the images will be sent to the email address specified in the "email" key.
         - if false, the images will not be sent to the email address specified in the "email" key.
 
+    - "strength": int value of the strength of the image
+
     - "email": the email address to send the images to.
         - must be a valid email address.
 
     - "password": the password to send the images to.
         - must be a google app password
         - for more information on how to generate a google app password, see here: https://support.google.com/accounts/answer/185833?hl=en
+

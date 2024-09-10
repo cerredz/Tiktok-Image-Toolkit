@@ -3,10 +3,11 @@
     "width": 768,
     "height": 1280
   },
-  "output_directory": "images/astronaut",
+  "output_directory": "images/future",
   "model": "Sovera/FLUX.1-dev",
   "hf_token": "",
-  "num_inference_steps": 12,
+  "num_inference_steps": 28,
+  "strength": 3.5,
   "send_images": true,
   "email": "retto123456789@gmail.com",
   "password": ""

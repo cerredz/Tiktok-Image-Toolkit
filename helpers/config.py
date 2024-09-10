@@ -28,9 +28,10 @@ def validate_config(config):
     width = config["image"]["width"]
     height = config["image"]["height"]
     output_directory = config["output_directory"]
+    strength = config["strength"]
 
     # check if the required parameters are in the config
-    if not model or not hf_token or not num_inference_steps or not width or not height or not output_directory:
+    if not model or not hf_token or not num_inference_steps or not width or not height or not output_directory or not strength:
         raise ValueError("Missing required parameters in config.json")
         return False
     
@@ -46,6 +47,11 @@ def validate_config(config):
     # check if the num_inference_steps is valid
     if num_inference_steps < 1 or num_inference_steps > 28:
         raise ValueError("Invalid Number of Inference Steps: Must be between 1 and 28")
+        return False
+    
+    # check if the strength is valid
+    if strength < 1 or strength > 15:
+        raise ValueError("Invalid Strength Value: Must Be Between 1 and 15")
         return False
     
     return True
